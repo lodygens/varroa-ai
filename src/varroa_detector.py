@@ -9,7 +9,7 @@ from tensorflow.keras.preprocessing.image import load_img, img_to_array
 
 class VarroaDetector:
     """
-    Ce modèle est un detecteur d'object
+    Cette class implemente un modèle pour detecter des objects
     """
 
     def __init__(self, input_shape=(224, 224, 3)):
@@ -99,7 +99,21 @@ class VarroaDetector:
         
         return np.array(images), np.array(classifications), np.array(bboxes)
     
-    def train(self, videos_dir, labels_dir, epochs=10, batch_size=32):
+    def train(self, videos_dir, labels_dir, epochs=20, batch_size=32):
+        """
+        Pour votre cas de détection de varroas :
+
+        Commencez avec 20 epochs
+        Surveillez la courbe de validation loss :
+            Si elle remonte, arrêtez plus tôt (early stopping)
+            Si elle continue de descendre, vous pouvez augmenter encore le nombre d'epochs
+
+        Le nombre optimal d'epochs dépend de :
+            La quantité de données d'entraînement
+            La complexité du problème
+            La qualité des images
+            La variabilité des varroas dans les images
+        """
         # Charger et prétraiter les données
         X, y_class, y_bbox = self.load_and_preprocess_data(videos_dir, labels_dir)
         

@@ -9,7 +9,7 @@ from tensorflow.keras.preprocessing.image import ImageDataGenerator
 class VarroaClassificator:
 
     """
-    Ce modèle est un classificateur binaire simple (présence/absence de varroa)
+    Cette classe implemente un modele pour classifier des objects (présence/absence)
     """
 
     def __init__(self, input_shape=(224, 224, 3)):

@@ -1,8 +1,8 @@
-from varroa_classificator import VarroaClassificator
+from varroa_detector_earlystop import VarroaDetector
 
 def main():
     # Initialize detector and load trained model
-    detector = VarroaClassificator()
+    detector = VarroaDetector()
     detector.load_model('varroa_detector_model.h5')
     
     # Start video stream processing
