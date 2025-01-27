@@ -137,7 +137,7 @@ class VarroaDetector:
         # Définir les callbacks; on veut minimiser le loss
         early_stopping = EarlyStopping(
             monitor='val_classification_loss',
-            patience=5,
+            patience=2,
             restore_best_weights=True,
             mode='min'
         )
@@ -185,7 +185,7 @@ class VarroaDetector:
                 
                 class_pred, bbox_pred = self.process_image(frame)
                 
-                if class_pred > 0.5:
+                if class_pred > 0.1:
                     height, width, _ = frame.shape
                     x1 = int(bbox_pred[0] * width)
                     y1 = int(bbox_pred[1] * height)
